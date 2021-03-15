@@ -7,8 +7,8 @@
  */
 int main(void)
 {
-	int i = 0;
 	int a = 0, b = 1, next = 0;
+	int sum = 0;
 
 	while (next < 4000000)
 	{
@@ -16,9 +16,8 @@ int main(void)
 		a = b;
 		b = next;
 		if (next % 2 == 0)
-			printf("%i\n", next);
-
-		i++;
+			sum += next;
 	}
+	printf("%i\n", next);
 	return (0);
 }
