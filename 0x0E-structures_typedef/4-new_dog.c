@@ -52,8 +52,9 @@ if (mydog == NULL)
 
 mydog->name = _strdup(name);
 
-if (mydog->name == NULL)
+if (!mydog->name)
 {
+	free(mydog->name);
 	free(mydog);
 	return (NULL);
 }
@@ -62,6 +63,7 @@ mydog->owner = _strdup(owner);
 
 if (mydog->owner == NULL)
 {
+	free(mydog->owner);
 	free(mydog->name);
 	free(mydog);
 	return (NULL);
