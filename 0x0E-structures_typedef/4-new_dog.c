@@ -12,36 +12,35 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *new_dog;
-	char *cpname, *cpowner;
-	int lenname, lenowner;
+	int len_name, len_owner;
 
 	new_dog = malloc(sizeof(dog_t));
 	if (new_dog == NULL)
 		return (NULL);
-	lenname = _strlen(name);
-	lenowner = _strlen(owner);
-	cpname = malloc(sizeof(char) * lenname + 1);
-	if (cpname == NULL)
+
+	len_name = _strlen(name);
+	new_dog->name = malloc(sizeof(char) * len_name + 1);
+	if (new_dog->name == NULL)
 	{
-		free(cpname);
 		free(new_dog);
 		return (NULL);
 	}
-	cpname = _strcpy(cpname, name);
-	cpowner = malloc(sizeof(char) * lenowner + 1);
-	if (cpowner == NULL)
+	new_dog->name = _strcpy(new_dog->name, name);
+	len_owner = _strlen(owner);
+	new_dog->owner = malloc(sizeof(char) * len_owner + 1);
+	if (new_dog->owner == NULL)
 	{
-		free(cpowner);
-		free(cpname);
+		free(new_dog->name);
 		free(new_dog);
 		return (NULL);
 	}
-	cpowner = _strcpy(cpowner, owner);
-	new_dog->name = cpname;
+
+	new_dog->owner = _strcpy(new_dog->owner, owner);
 	new_dog->age = age;
-	new_dog->owner = cpowner;
+
 	return (new_dog);
 }
+
 /**
  * _strlen - determinates the lenght of a string
  * @s: pointer to string
@@ -50,14 +49,12 @@ dog_t *new_dog(char *name, float age, char *owner)
 int _strlen(char *s)
 {
 	int a;
-	int len;
 
 	for (a = 0; s[a] != '\0'; a++)
-	{
-		len++;
-	}
+	;
 	return (a);
 }
+
 /**
  * _strcpy - copies a pointed string
  * @dest: pointer to the destine string
@@ -66,9 +63,7 @@ int _strlen(char *s)
  */
 char *_strcpy(char *dest, char *src)
 {
-	int a;
-
-	a = 0;
+	int a = 0;
 
 	while (src[a] != '\0')
 	{
