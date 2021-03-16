@@ -15,7 +15,7 @@ int main(void)
 	head = NULL;
 	add_nodeint_end(&head, 0);
 	add_nodeint_end(&head, 1);
-	add_nodeint_end(&head, -2);
+	add_nodeint_end(&head, 2);
 	add_nodeint_end(&head, 3);
 	add_nodeint_end(&head, 4);
 	add_nodeint_end(&head, 98);
@@ -23,7 +23,7 @@ int main(void)
 	add_nodeint_end(&head, 1024);
 	print_listint(head);
 	printf("-----------------\n");
-	insert_nodeint_at_index(&head, 3, -4096);
+	insert_nodeint_at_index(&head, 7, 4096);
 	print_listint(head);
 	free_listint2(&head);
 	return (0);
